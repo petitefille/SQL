@@ -1,0 +1,13 @@
+#!/bin/bash
+VERSIONS="4.4 4.5 4.6 4.7 4.8 4.9"
+
+make clean &>/dev/null
+for CC in gcc-4.4 gcc-4.6 gcc-4.7 gcc-4.8 gcc-4.9; do
+	if which $CC; then
+		make CC=$CC > /dev/null
+		make clean &>/dev/null
+	else
+		echo "No $CC"
+	fi
+done
+
